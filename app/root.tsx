@@ -35,6 +35,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
         <ScrollRestoration />
         <Scripts />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.ENV = ${JSON.stringify({
+              VITE_API_BASE_URL: "${process.env.VITE_API_BASE_URL || ''}"
+            })}`,
+          }}
+        />
       </body>
     </html>
   );
